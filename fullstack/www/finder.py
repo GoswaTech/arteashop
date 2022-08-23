@@ -22,12 +22,34 @@ class Finder:
 
         return path
 
+
     def find_categories(self):
         products_path = self.root_path+'/staticfiles/products'
 
         categories = os.listdir(products_path)
 
-        def products_filter(entry):
+        def categories_filter(entry):
             return os.path.isdir(products_path+'/'+entry)
 
-        return list(filter(products_filter, categories))
+        return list(filter(categories_filter, categories))
+
+    def find_articles(self, **kwargs):
+        category = kwargs.pop('category', None)
+
+
+        if category == None:
+            searched_categories = self.find_categories()
+        else:
+            searched_categories = [category]
+
+        library = {}
+        def products_filter(entry):
+            return os.path.isdir(entry)
+
+        for category in searched_categories:
+            path = self.root_path + '/staticfiles/products/{0}/'.format(category)
+            products = os.listdir(path)
+            products = list(filter(products_filter, products))
+            library[category.lower()] = products
+
+        return library

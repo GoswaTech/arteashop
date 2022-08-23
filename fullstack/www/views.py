@@ -18,11 +18,15 @@ def index(request):
 
     # Récupère les articles de chaque catégorie
     for category in categories:
-        library.append(finder.find_articles(category))
+        articles = finder.find_articles(category=category.lower())
+        library[category.lower()] = articles
 
     # Ajoute un message
     for category in categories:
         message += category+' / '
+
+        for product in library[category.lower()]:
+            message += product+' / '
 
     message += '.. / .'
 
