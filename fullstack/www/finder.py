@@ -43,13 +43,12 @@ class Finder:
             searched_categories = [category]
 
         library = {}
-        def products_filter(entry):
-            return os.path.isdir(entry)
 
         for category in searched_categories:
             path = self.root_path + '/staticfiles/products/{0}/'.format(category)
-            products = os.listdir(path)
-            products = list(filter(products_filter, products))
-            library[category.lower()] = products
+            for root, dirs, files in os.walk(path):
+                if len(dirs) > 0:
+                    library[category.lower()] = dirs
+                break
 
         return library

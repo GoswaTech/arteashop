@@ -19,14 +19,14 @@ def index(request):
     # Récupère les articles de chaque catégorie
     for category in categories:
         articles = finder.find_articles(category=category.lower())
-        library[category.lower()] = articles
+        library[category.lower()] = articles.get(category.lower(), [])
 
     # Ajoute un message
     for category in categories:
         message += category+' / '
 
-        for product in library[category.lower()]:
-            message += product+' / '
+        for product in library.get(category.lower()):
+            message += '\n\t- '+product+' - '
 
     message += '.. / .'
 
