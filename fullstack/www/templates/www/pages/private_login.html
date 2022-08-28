@@ -1,0 +1,16 @@
+{% extends "www/index.html" %}
+
+{% block content %}
+
+  <h1 class="text-center p-3">{{ site_title }}</h1>
+
+  <div class="container py-3 text-light">
+    <h2>
+      Auhtentification de {{ slug }}
+    </h2>
+    <div class="p-3 d-flex justify-content-center">
+      {% include "www/components/private_login.html" with slug=slug %}
+    </div>
+  </div>
+
+{% endblock content %}

@@ -1,0 +1,34 @@
+.category.card
+  background-color: rgba(127, 7, 255, .11)
+  box-shadow: 0 0 7px rgba(127, 7, 255, .33)
+  transition: .77s
+  &:hover
+    box-shadow: 0 0 7px rgba(127, 7, 255, .77)
+
+.article.card
+  overflow: hidden
+  background-color: rgba(63, 255, 255, .33)
+  box-shadow: 0 0 12px 3px rgba(63, 255, 255, .42)
+  transition: .77s
+  &:hover
+    box-shadow: 0 0 12px 3px rgba(63, 255, 255, .77)
+
+  & .background
+    position: absolute
+    width: 100%
+    height: 100%
+
+    display: flex
+    justify-content: center
+    align-items: center
+
+    overflow: hidden
+    opacity: .77
+
+  & .foreground
+    position: relative
+    background-color: rgba(255, 255, 255, .42)
+    color: black
+
+.carousel-container
+  height: 128px

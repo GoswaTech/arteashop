@@ -1,0 +1,40 @@
+{% load static %}
+
+
+<div class="article card w-100">
+
+  <div class="background">
+
+    <img class="img-fluid"
+        src="{{ article.cover_image.src }}"
+        alt="{{ article.cover_image.alt }}">
+
+  </div>
+
+  <div class="foreground">
+
+    <h3 class="card-title p-2 text-dark">
+      {{ article.title }}
+    </h3>
+
+    <div class="card-body">
+      <p>{{ article.description }}</p>
+    </div>
+
+
+    <div class="card-footer d-flex justify-content-end">
+
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+          data-bs-target="#{{ article.id }}">
+        view article
+      </button>
+
+      <!-- Modal -->
+      {% include "www/components/article_modal.html" with article=article %}
+
+    </div>
+
+  </div>
+
+</div>
